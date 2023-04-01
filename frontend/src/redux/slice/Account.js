@@ -54,6 +54,8 @@ export const isLoggedIn = createAsyncThunk(
     const resp = await isAuthAPI();
     const {status} = resp;
 
+    console.log(resp);
+
     if (status === StatusCodes.OK) {
       dispatch(addNotification({message: 'Welcome back!', title: 'Welcome'}));
       return dispatch(login());
