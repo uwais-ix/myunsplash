@@ -6,6 +6,6 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-console.log('axiosInstance', axiosInstance);
+console.log(process.env.deployed, 'deploayed env');
 
 export default axiosInstance;
