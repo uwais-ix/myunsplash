@@ -17,6 +17,8 @@ const corsOptions = {
     'Content-Type',
     'Access-Control-Allow-Origin',
     'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Methods',
+    'Access-Control-Allow-Credentials',
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   maxAge: 5000,

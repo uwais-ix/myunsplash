@@ -10,7 +10,7 @@ const setLoginCookie = (res, email) => {
   res.cookie('token', jwt.sign({email}, process.env.JWT_SECRET), {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7,
-    sameSite: 'none',
+    sameSite: 'lax',
   });
 };
 
