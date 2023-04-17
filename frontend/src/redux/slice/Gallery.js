@@ -68,7 +68,7 @@ export const loadGallery = createAsyncThunk(
     const {data, status} = await getGalleryAPI();
 
     console.log('gallery_data', data);
-    console.log('gallery_statsu', status);
+    console.log('gallery_status', status);
 
     if (status === StatusCodes.OK) {
       return dispatch(setGallery(data));
