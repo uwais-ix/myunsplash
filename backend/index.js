@@ -11,14 +11,16 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 
 const corsOptions = {
-  origin: process.env.origin,
+  origin:  process.env.origin,
   credentials: true,
   allowedHeaders: [
     'Content-Type',
     'Access-Control-Allow-Origin',
     'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Methods',
+    'Access-Control-Allow-Credentials',
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   maxAge: 5000,
 };
 

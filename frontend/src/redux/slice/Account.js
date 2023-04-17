@@ -18,7 +18,6 @@ const accountSlice = createSlice({
       state.isAuth = true;
     },
     logout(state) {
-      window.localStorage.removeItem('token');
       state.isAuth = false;
     },
   },
@@ -51,6 +50,13 @@ const {login, logout} = accountSlice.actions;
 export const isLoggedIn = createAsyncThunk(
   'account/login',
   async (_, {dispatch}) => {
+    dispatch(
+      addNotification({
+        message: 'Checking if you are logged in...',
+        title: 'Checking',
+      })
+    );
+
     const resp = await isAuthAPI();
     const {status} = resp;
 
@@ -69,7 +75,6 @@ export const loginUser = createAsyncThunk(
     const {email, password} = payload;
     const {data, status} = await loginAPI(email, password);
     if (status === StatusCodes.OK) {
-      window.localStorage.setItem('token', data.token);
       dispatch(addNotification({message: 'Welcome back!', title: 'Welcome'}));
       return dispatch(login());
     }
@@ -83,7 +88,6 @@ export const registerUser = createAsyncThunk(
     const {email, password} = payload;
     const {data, status} = await signupAPI(email, password);
     if (status === StatusCodes.OK) {
-      window.localStorage.setItem('token', data.token);
       dispatch(addNotification({message: 'Welcome!', title: 'Welcome'}));
       return dispatch(login());
     }
